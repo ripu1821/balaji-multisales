@@ -126,7 +126,7 @@
         float: right;
         display: inherit !important;
         padding: 0;
-        width: 100%;
+        /* width: 100%; */
         padding-top: 12px;
     }
     .navigation .navbar-collapse {
@@ -168,12 +168,13 @@
 
 @media (max-width: 575px) {
     .header {
-        padding: 30px 0px 15px 0px;
+        padding: 30px 17px 15px 17px;
     }
     .logo {
         text-align: center !important;
         padding-bottom: 6px;
         float: left;
+        /* width: 390px */
     }
     #banner1 .carousel-inner {
         padding-right: 0;
@@ -224,16 +225,17 @@
         float: right;
         display: inherit !important;
         padding: 0;
-        width: 100%;
-        margin-top: -96px;
+        /* width: 100%; */
+        /* margin-top: -96px; */
     }
     .navigation .navbar-collapse {
         background: #48ca95;
         padding: 20px;
-        margin-top: 67px;
+        margin-top: 204px;
+        margin-left: -140px;
         position: absolute;
-        width: 100%;
-        margin-right: 20px;
+        /* width: 100%; */
+        /* margin-right: 20px; */
         z-index: 999;
     }
     .navigation.navbar-dark .navbar-nav .nav-link {
