@@ -1,9 +1,10 @@
 var addEmployeeBtn = document.getElementById("addEmployeeBtn");
+var signOutButton = document.getElementById("signOutBtn");
 const supabaseKey =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVkenFoamJrdGtveWRobmpud3F3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTI0ODYzODcsImV4cCI6MjAyODA2MjM4N30.8SxMTA8Gma05ccO7ZKHGJqVLPQLOpQbvlvDRkh1ta54";
 const supabaseUrl = "https://edzqhjbktkoydhnjnwqw.supabase.co";
 const database = supabase.createClient(supabaseUrl, supabaseKey);
-
+const { auth } = database;
 async function addEmployee(name, role) {
   try {
     const { error } = await database.from("employee").insert([{ name, role }]);
@@ -290,3 +291,20 @@ async function employeeList() {
   }
   // Call displayEmployees function to initially populate the employee list
   displayEmployeeList();
+
+  signOutButton.addEventListener("click", async () => {
+    try {
+      const { error } = await auth.signOut();
+      if (error) {
+        console.error("Error signing out:", error.message);
+      } else {
+        console.log("User signed out successfully");
+        window.location.href = "os-admin.html";
+        localStorage.removeItem("isLoggedIn");
+        updateContentVisibility();
+        alert("Logged out successfully.");
+      }
+    } catch (error) {
+      console.error("Error signing out:", error.message);
+    }
+  });
