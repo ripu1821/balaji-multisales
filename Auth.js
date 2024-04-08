@@ -8,7 +8,6 @@ const supabaseUrl = "https://edzqhjbktkoydhnjnwqw.supabase.co";
 const database = supabase.createClient(supabaseUrl, supabaseKey);
 const { auth } = database;
 
-
 // signig in the user
 signInButton.addEventListener("click", async () => {
   // const email = 'codingwizardsolution@gmail.com';
@@ -30,6 +29,7 @@ signInButton.addEventListener("click", async () => {
       console.log("Session:", data?.session);
       if (data?.user && data?.session) {
         localStorage.setItem("isLoggedIn", "true");
+        window.location.href = "admin-employee.html";
         updateContentVisibility();
       }
     }
@@ -38,7 +38,7 @@ signInButton.addEventListener("click", async () => {
   }
 });
 
-// signing out the user 
+// signing out the user
 signOutButton.addEventListener("click", async () => {
   try {
     const { error } = await auth.signOut();

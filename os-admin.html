@@ -51,21 +51,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarsExample04">
                <ul class="navbar-nav mr-auto">
-                  <li class="nav-item ">
-                     <a class="nav-link" href="index.html">Home</a>
-                  </li>
-
                   <li class="nav-item">
-                     <a class="nav-link" href="product.html">Products</a>
+                     <a class="nav-link active" href="os-admin.html">Admin</a>
                   </li>
                   <li class="nav-item">
-                     <a class="nav-link" href="about.html">About</a>
-                  </li>
-                  <li class="nav-item active">
-                     <a class="nav-link" href="employee.html">Employee</a>
-                  </li>
-                  <li class="nav-item">
-                     <a class="nav-link" href="contact.html">Contact Us</a>
+                     <a class="nav-link" href="admin-employee.html">Admin Employee</a>
                   </li>
                </ul>
             </div>
@@ -76,18 +66,20 @@
       <div id="content">
          <h1>Welcome to the Secret Area</h1>
          <p>This is some super secret content that only authenticated users should see.</p>
-         <button id="signOutBtn">Sign out</button>
-     </div>
- 
-     <div id="loginFormdiv">
-         <h1>Login</h1>
-            <input type="text" id="username" placeholder="Username" value="">
-            <input type="password" id="password" placeholder="Password" value="">
-            <button id="signInBtn">Sign In</button>
-     </div>
+         <button class="add-btn" id="signOutBtn">Sign out</button>
+      </div>
+
+      <div id="loginFormdiv">
+         <h1 class="section-header">Login</h1>
+         <div class="row justify-content-center">
+            <input class="input-field" type="text" id="username" placeholder="Username" value="">
+            <input class="input-field" type="password" id="password" placeholder="Password" value="">
+            <button class="add-btn" id="signInBtn">Sign In</button>
+         </div>
+      </div>
    </div>
    </div>
-   
+
    <!--  footer -->
    <footer>
       <div class="footer">
@@ -140,10 +132,7 @@
    <script src="js/custom.js"></script>
 
    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-    <script src="Auth.js"></script>
+   <script src="Auth.js"></script>
 </body>
 
 </html>
-
-
-
