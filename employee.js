@@ -134,7 +134,6 @@ async function deleteEmployee(id) {
   }
 }
 
-
 //   if (event.target.classList.contains("edit-btn")) {
 //     const employeeId = event.target.dataset.id;
 //     const employee = await getEmployeeById(employeeId);
@@ -176,12 +175,12 @@ document.addEventListener("click", async (event) => {
       modal.style.display = "block";
 
       // When the user clicks on <span> (x), close the modal
-      span.onclick = function() {
+      span.onclick = function () {
         modal.style.display = "none";
-      }
+      };
 
       // Update the employee when the update button is clicked
-      document.getElementById("updateBtn").onclick = async function() {
+      document.getElementById("updateBtn").onclick = async function () {
         const name = document.getElementById("name").value;
         const role = document.getElementById("role").value;
         if (name && role) {
@@ -196,13 +195,12 @@ document.addEventListener("click", async (event) => {
         } else {
           alert("Please enter both name and role.");
         }
-      }
+      };
     } else {
       alert("Employee not found.");
     }
   }
 });
-
 
 async function getEmployeeById(id) {
   try {
@@ -244,67 +242,60 @@ async function updateEmployee(id, name, role) {
   }
 }
 
-
 async function employeeList() {
-    try {
-      const { data, error } = await database.from("employee").select("*");
-  
-      if (error) {
-        console.error("Error getting employees:", error.message);
-        return null;
-      }
-  
-      return data;
-    } catch (error) {
+  try {
+    const { data, error } = await database.from("employee").select("*");
+
+    if (error) {
       console.error("Error getting employees:", error.message);
       return null;
     }
+
+    return data;
+  } catch (error) {
+    console.error("Error getting employees:", error.message);
+    return null;
   }
-  
-  async function displayEmployeeList() {
-    const employees = await getEmployees();
-    if (employees) {
-      const employeeTableBody = document.getElementById("employeeList");
-      employeeTableBody.innerHTML = "";
-  
-      employees.forEach((employee) => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-        <td>
-            <div class="row justify-content-center">
-                <div class="col-lg-6 col-md-6 col-sm-12 text-center">
-                    <div class="employee-card">
-                        <img src="images/employee.jpg" alt="Employee Image">
-                        <h3>${employee.name}</h3>
-                        <h4>${employee.role}</h4>
-                    </div>
-                </div>
-            </div>
+}
+
+async function displayEmployeeList() {
+  const employees = await getEmployees();
+  if (employees) {
+    const employeeTableBody = document.getElementById("employeeList");
+    employeeTableBody.innerHTML = "";
+
+    employees.forEach((employee) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td class="item">
+         <img src="images/employee.jpg" alt="Employee Image">
+         <h3>${employee.name}</h3>
+         <h4>${employee.role}</h4>   
         </td>
     `;
-  
-        employeeTableBody.appendChild(row);
-      });
-    } else {
-      console.log("Failed to retrieve employee data.");
-    }
-  }
-  // Call displayEmployees function to initially populate the employee list
-  displayEmployeeList();
 
-  signOutButton.addEventListener("click", async () => {
-    try {
-      const { error } = await auth.signOut();
-      if (error) {
-        console.error("Error signing out:", error.message);
-      } else {
-        console.log("User signed out successfully");
-        window.location.href = "os-admin.html";
-        localStorage.removeItem("isLoggedIn");
-        updateContentVisibility();
-        alert("Logged out successfully.");
-      }
-    } catch (error) {
+      employeeTableBody.appendChild(row);
+    });
+  } else {
+    console.log("Failed to retrieve employee data.");
+  }
+}
+// Call displayEmployees function to initially populate the employee list
+displayEmployeeList();
+
+signOutButton.addEventListener("click", async () => {
+  try {
+    const { error } = await auth.signOut();
+    if (error) {
       console.error("Error signing out:", error.message);
+    } else {
+      console.log("User signed out successfully");
+      window.location.href = "os-admin.html";
+      localStorage.removeItem("isLoggedIn");
+      updateContentVisibility();
+      alert("Logged out successfully.");
     }
-  });
+  } catch (error) {
+    console.error("Error signing out:", error.message);
+  }
+});
