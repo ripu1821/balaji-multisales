@@ -267,11 +267,9 @@ async function displayEmployeeList() {
     employees.forEach((employee) => {
       const row = document.createElement("tr");
       row.innerHTML = `
-        <td class="item">
          <img src="images/employee.jpg" alt="Employee Image">
-         <h3>${employee.name}</h3>
-         <h4>${employee.role}</h4>   
-        </td>
+         <h4>${employee.name}</h4>
+         <p>${employee.role}</p>   
     `;
 
       employeeTableBody.appendChild(row);

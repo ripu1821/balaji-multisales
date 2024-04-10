@@ -150,19 +150,18 @@ async function displayEmployees() {
     employeeTableBody.innerHTML = "";
 
     employees.forEach((employee) => {
-      const row = document.createElement("tr");
-      row.innerHTML = `
-      <td class="item">
-          
-                      <img src="images/employee.jpg" alt="Employee Image">
-                      <h3>${employee.name}</h3>
-                      <h4>${employee.role}</h4>
-                      <div  style="margin-bottom: 10px">
-                      <button class="edit-btn" data-id="${employee.id}">Edit</button>
-                      <button class="delete-btn" data-id="${employee.id}">Delete</button>
-                      </div>
-      </td>
-  `;
+      const row = document.createElement("div");
+      row.classList.add('item');
+        row.innerHTML = `
+       
+       <img src="images/employee.jpg" alt="Employee Image">
+                        <h3>${employee.name}</h3>
+                        <h4>${employee.role}</h4>
+                        <div  style="margin-bottom: 10px;">
+                         <button class="edit-btn" data-id="${employee.id}">Edit</button>
+                         <button class="delete-btn" data-id="${employee.id}">Delete</button>
+                        </div>
+    `;
 
       employeeTableBody.appendChild(row);
     });
@@ -342,3 +341,20 @@ async function displayEmployeeList() {
 }
 // Call displayEmployees function to initially populate the employee list
 displayEmployeeList();
+
+function checkUserStatus(){
+  if (localStorage.getItem("isLoggedIn") == "true") {
+    signOutButton.style.display = "block";
+  } else {
+    signOutButton.style.display = "none";
+  }
+}
+
+// Call displayEmployees function to initially populate the employee list
+displayEmployeeList();
+checkUserStatus();
+
+document.getElementById('addEmployeeBtn').addEventListener('click', function() {
+  document.getElementById('employeeName').value = '';
+  document.getElementById('employeeRole').value = '';
+});

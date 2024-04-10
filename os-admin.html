@@ -51,7 +51,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarsExample04">
                <ul class="navbar-nav mr-auto">
-                  <button class="logout-btn" id="signOutBtn" style="display: none;">Logout</button>
+                  <div class="topbar-col logout show">
+                     <a id="signOutBtn" style="color: red; cursor: pointer;" class="nav-item nav-link">Logout</a>
+                 </div>
                </ul>
             </div>
          </nav>
@@ -65,19 +67,16 @@
          <div id="employeeDetails">
             <div class="about container text-center" id="addEmployeeForm">
                <h1>Add New Employee</h1>
-               <input class="input-field" type="text" id="employeeName" placeholder="Employee Name">
-               <input class="input-field" type="text" id="employeeRole" placeholder="Employee Role">
+               <input class="input-field" type="text" id="employeeName" placeholder="Employee Name" value="">
+               <input class="input-field" type="text" id="employeeRole" placeholder="Employee Role" value="">
                <button class="add-btn" id="addEmployeeBtn">Add Employee</button>
             </div>
             <!-- Employee List -->
             <!-- <div class="about"> -->
             <h1 class="text-center">Employees</h1>
             <div id="addEmployeeBtn" class="employee-card">
-               <table>
-                  <tbody class="employee-list" id="employeeTableBody">
-                  </tbody>
-               </table>
-            </div>
+               <div class="employee-list row" id="employeeTableBody"></div>
+           </div>
             <!-- </div> -->
             <!-- Model for update -->
             <div id="myModal" class="modal">
